@@ -3,4 +3,4 @@ project(kernelDensityEstimator)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_library(kernelDensityEstimator library.cpp library.h interfaces/i_kernel.h)
+add_library(kernelDensityEstimator interfaces/i_kernel.h kernels/normalKernel.cpp kernels/normalKernel.h)
