@@ -8,13 +8,10 @@ class epanecznikowKernel : public i_kernel
 public:
   epanecznikowKernel();
 
-  double getValue(std::vector<double> args) override;
-
   double getW() override;
-
   double getU() override;
-
   double getValue(double arg) override;
+  double getValue(std::vector<double> args) override;
 };
 
 

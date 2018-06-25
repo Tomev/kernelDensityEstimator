@@ -19,19 +19,6 @@ double linearKernel::getValue(double arg)
   return 0.0f;
 }
 
-double linearKernel::getValue(std::vector<double> args)
-{
-  /** Note, that it's a single dimension function. It only works on first element of vector,
-   *  and doesn't do any checking (contract programming).
-   *
-   *  @brief Return value of linear kernel in args[0].
-   *
-   *  @return Linear kernel value in args[0].
-   */
-
-  return getValue(args[0]);
-}
-
 double linearKernel::getW()
 {
   return 1.0 / 3.0;
@@ -40,6 +27,11 @@ double linearKernel::getW()
 double linearKernel::getU()
 {
   return 0.5;
+}
+
+double linearKernel::getValue(std::vector<double> args)
+{
+  return i_singleArgumentFunction::getValue(args);
 }
 
 
