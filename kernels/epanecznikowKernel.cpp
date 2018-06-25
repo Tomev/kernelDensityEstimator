@@ -20,7 +20,7 @@ double epanecznikowKernel::getValue(double arg)
    *
    *  @brief Return value of epanecznikow kernel in arg.
    *
-   *  @return Linear epanecznikow value in arg.
+   *  @return Epanecznikow kernel value in arg.
    */
 
   if(fabs(arg) <= 1) return 3.0/4.0 * (1 - pow(arg, 2));

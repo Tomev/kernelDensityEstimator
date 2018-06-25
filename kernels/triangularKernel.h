@@ -8,8 +8,6 @@ class triangularKernel : public i_kernel
   public:
     triangularKernel();
 
-    using i_kernel::getValue;
-
     double getW() override;
     double getU() override;
     double getValue(double arg) override;

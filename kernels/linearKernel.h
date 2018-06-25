@@ -8,8 +8,6 @@ class linearKernel : public i_kernel
   public:
     linearKernel();
 
-    using i_kernel::getValue;
-
     double getValue(double arg) override;
     double getW() override;
     double getU() override;

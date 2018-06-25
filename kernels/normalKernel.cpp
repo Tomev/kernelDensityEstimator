@@ -10,7 +10,7 @@ double normalKernel::getValue(double arg)
 {
   /** Note, that it's a single dimension function. Doesn't do any checking (contract programming).
    *
-   *  @brief Return value of N(0,stdDev) in arg.
+   *  @brief Return value of N(0, stdDev) in arg.
    *
    *  @return Normal distribution probability density value in arg.
    */

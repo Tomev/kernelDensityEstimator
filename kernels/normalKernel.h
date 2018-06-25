@@ -9,8 +9,6 @@ class normalKernel : public i_kernel
     normalKernel();
     explicit normalKernel(double stdDev);
 
-    using i_kernel::getValue;
-
     double getValue(double arg) override;
     double getW() override;
     double getU() override;
