@@ -5,13 +5,13 @@
 
 class linearKernel : public i_kernel
 {
-  linearKernel();
+  public:
+    linearKernel();
 
-  double getValue(double arg) override;
-  double getValue(std::vector<double> args) override;
-  double getW() override;
-  double getU() override;
-
+    double getValue(double arg) override;
+    double getValue(std::vector<double> args) override;
+    double getW() override;
+    double getU() override;
 };
 
 #endif //KERNELDENSITYESTIMATOR_DULLKERNEL_H
