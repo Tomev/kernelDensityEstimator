@@ -9,7 +9,7 @@ double linearKernel::getValue(double arg)
 {
   /** Note, that it's a single dimension function. Doesn't do any checking (contract programming).
    *
-   *  @brief Return value of linearKernel in arg.
+   *  @brief Return value of linear kernel in arg.
    *
    *  @return Linear kernel value in arg.
    */
@@ -24,7 +24,7 @@ double linearKernel::getValue(std::vector<double> args)
   /** Note, that it's a single dimension function. It only works on first element of vector,
    *  and doesn't do any checking (contract programming).
    *
-   *  @brief Return value of linearKernel in args[0].
+   *  @brief Return value of linear kernel in args[0].
    *
    *  @return Linear kernel value in args[0].
    */
