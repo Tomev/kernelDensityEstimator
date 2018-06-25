@@ -1,0 +1,1 @@
+add_library(KERNELS_LIB normalKernel.cpp normalKernel.h)

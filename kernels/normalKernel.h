@@ -16,7 +16,7 @@ class normalKernel : public i_kernel
     double getU() override;
 
   protected:
-    double stdDev = 0.0;
+    double stdDev = 1.0;
 
 
 };
