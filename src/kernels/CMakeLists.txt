@@ -1,1 +1,1 @@
-add_library(KERNELS_LIB normalKernel.cpp normalKernel.h linearKernel.cpp linearKernel.h epanecznikowKernel.cpp epanecznikowKernel.h triangularKernel.cpp triangularKernel.h)
+add_library(KERNELS_LIB normalKernel.cpp normalKernel.h linearKernel.cpp linearKernel.h epanecznikowKernel.cpp epanecznikowKernel.h triangularKernel.cpp triangularKernel.h kernels.h)
