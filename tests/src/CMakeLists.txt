@@ -1,6 +1,6 @@
 include_directories(${gtest_SOURCE_DIR} ${gtest_SOURCE_DIR}/include)
 
-add_executable(kernelsTests kernels/normalKernel_tests.cpp kernels/linearKernel_tests.cpp kernels/epanecznikowKernel_tests.cpp kernels/triangularKernel_tests.cpp)
+add_executable(kernelsTests kernels/normalKernel_tests.cpp kernels/linearKernel_tests.cpp kernels/epanecznikowKernel_tests.cpp kernels/triangularKernel_tests.cpp kernels/productKernel_tests.cpp)
 
 target_link_libraries(kernelsTests gtest gtest_main)
 target_link_libraries(kernelsTests KERNELS_LIB)
