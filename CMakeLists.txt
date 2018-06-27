@@ -3,7 +3,7 @@ project(kernelDensityEstimator)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_library(kernelDensityEstimator interfaces/i_kernel.h src/kernels/normalKernel.cpp src/kernels/normalKernel.h src/kernelDensityEstimator.cpp src/kernelDensityEstimator.h)
+add_library(KDE_LIB interfaces/i_kernel.h src/kernels/normalKernel.cpp src/kernels/normalKernel.h src/kernelDensityEstimator.cpp src/kernelDensityEstimator.h)
 
 include_directories(src/kernels)
 

@@ -20,5 +20,6 @@ class kernelDensityEstimator : public i_function
 
 };
 
+typedef std::shared_ptr<kernelDensityEstimator> KDEPtr;
 
 #endif //KERNELDENSITYESTIMATOR_KERNELDENSITYESTIMATOR_H
