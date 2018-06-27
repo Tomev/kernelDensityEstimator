@@ -1,5 +1,13 @@
 #include "productKernel.h"
 
+
+/** Constructor of product kernel. Note that empty vector can be passed, however product kernel will then only
+ *  generate 0s, for any vector.
+ *
+ *  @brief Constructor of product kernel.
+ *
+ *  @param Vector of kernels.
+ */
 productKernel::productKernel(std::vector<kernelPtr> kernels) : kernels(kernels){}
 
 double productKernel::getValue(std::vector<double> args)
