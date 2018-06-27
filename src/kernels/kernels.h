@@ -5,5 +5,6 @@
 #include "linearKernel.h"
 #include "normalKernel.h"
 #include "triangularKernel.h"
+#include "productKernel.h"
 
 #endif //KERNELDENSITYESTIMATOR_KERNELS_H
