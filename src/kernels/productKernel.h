@@ -7,12 +7,12 @@
 class productKernel : public i_function
 {
   public:
-    productKernel(std::vector<i_kernel> kernels);
+    explicit productKernel(std::vector<kernelPtr> kernels);
 
     double getValue(std::vector<double> args) override;
 
   protected:
-    std::vector<i_kernel> kernels;
+    std::vector<kernelPtr> kernels;
 
 };
 
