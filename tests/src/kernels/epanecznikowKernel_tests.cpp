@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../../../kernels/epanecznikowKernel.h"
+#include "../../../src/kernels/epanecznikowKernel.h"
 
 #include <ctime>
 #include <random>

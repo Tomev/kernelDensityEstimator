@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../../../kernels/triangularKernel.h"
+#include "../../../src/kernels/triangularKernel.h"
 
 #include <ctime>
 #include <random>

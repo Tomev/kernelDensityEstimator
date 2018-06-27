@@ -1,7 +1,7 @@
 #ifndef KERNELDENSITYESTIMATOR_DULLKERNEL_H
 #define KERNELDENSITYESTIMATOR_DULLKERNEL_H
 
-#include "../interfaces/i_kernel.h"
+#include "../../interfaces/i_kernel.h"
 
 class linearKernel : public i_kernel
 {

@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../../../kernels/linearKernel.h"
+#include "../../../src/kernels/linearKernel.h"
 
 #include <ctime>
 #include <random>

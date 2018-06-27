@@ -1,7 +1,7 @@
 #ifndef KERNELDENSITYESTIMATOR_EPANECZNIKOWKERNEL_H
 #define KERNELDENSITYESTIMATOR_EPANECZNIKOWKERNEL_H
 
-#include "../interfaces/i_kernel.h"
+#include "../../interfaces/i_kernel.h"
 
 class epanecznikowKernel : public i_kernel
 {

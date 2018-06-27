@@ -1,7 +1,7 @@
 #ifndef KERNELDENSITYESTIMATOR_NORMALKERNEL_H
 #define KERNELDENSITYESTIMATOR_NORMALKERNEL_H
 
-#include "../interfaces/i_kernel.h"
+#include "../../interfaces/i_kernel.h"
 
 class normalKernel : public i_kernel
 {

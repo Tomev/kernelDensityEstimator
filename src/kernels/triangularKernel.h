@@ -1,7 +1,7 @@
 #ifndef KERNELDENSITYESTIMATOR_TRIANGULARKERNEL_H
 #define KERNELDENSITYESTIMATOR_TRIANGULARKERNEL_H
 
-#include "../interfaces/i_kernel.h"
+#include "../../interfaces/i_kernel.h"
 
 class triangularKernel : public i_kernel
 {
