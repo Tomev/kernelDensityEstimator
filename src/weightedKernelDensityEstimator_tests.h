@@ -16,4 +16,6 @@ class weightedKernelDensityEstimator : public kernelDensityEstimator
     std::vector<double> weights;
 };
 
+typedef std::shared_ptr<weightedKernelDensityEstimator> WKDEPtr;
+
 #endif //KERNELDENSITYESTIMATOR_WEIGHTEDKERNELDENSITYESTIMATOR_H

@@ -1,4 +1,4 @@
-#include "weightedKernelDensityEstimator.h"
+#include "weightedKernelDensityEstimator_tests.h"
 
 weightedKernelDensityEstimator::weightedKernelDensityEstimator(functionPtr kernel) : kernelDensityEstimator(kernel) {}
 
