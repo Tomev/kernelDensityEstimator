@@ -49,7 +49,7 @@ class kernelDensityEstimatorFixture : public ::testing::Test
     // Get some samples
     while(samples.size() < samplesNumber)
     {
-      samples.emplace_back({});
+      samples.emplace_back(std::vector<double>());
 
       while(samples[currentSampleIndex].size() < dimensionsNumber)
         samples[currentSampleIndex].push_back(samplesDistribution(generator));
