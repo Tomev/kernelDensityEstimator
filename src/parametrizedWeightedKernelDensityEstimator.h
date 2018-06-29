@@ -13,7 +13,8 @@ class parametrizedWeightedKernelDensityEstimator : public weightedKernelDensityE
 
   protected:
     std::vector<double> additionalParameters;
-
 };
+
+typedef std::shared_ptr<parametrizedWeightedKernelDensityEstimator> PWKDEPtr;
 
 #endif //KERNELDENSITYESTIMATOR_PARAMETRIZEDWEIGHTEDKERNELDENSITYESTIMATOR_H
