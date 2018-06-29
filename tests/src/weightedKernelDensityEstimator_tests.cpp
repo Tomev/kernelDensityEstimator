@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../../src/weightedKernelDensityEstimator_tests.h"
+#include "../../src/weightedKernelDensityEstimator.h"
 
 #include <ctime>
 #include <random>
