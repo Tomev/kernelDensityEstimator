@@ -7,8 +7,8 @@ void weightedKernelDensityEstimator::setWeights(std::vector<double> newWeights)
   weights = newWeights;
 }
 
-/** Returns value of weighted KDE in given point. Note that it assumes that settings are correct, specifically dimensionality of
- *  given point, bandwidth size, weights number and number of kernels (contract programming).
+/** Returns value of weighted KDE in given point. Note that it assumes that settings are correct, specifically
+ *  dimensionality of given point, bandwidth size, weights number and number of kernels (contract programming).
  *
  *  @brief Returns value of weighted KDE in given point.
  *
