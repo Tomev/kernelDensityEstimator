@@ -3,7 +3,7 @@
 
 #include <vector>
 
-class i_bandwidthDesignator
+class i_bandwidthCalculator
 {
   public:
     virtual std::vector<double> getBandwidth(std::vector<std::vector<double>> samples) = 0;

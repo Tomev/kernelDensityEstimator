@@ -3,7 +3,7 @@ project(kernelDensityEstimator)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_library(KDE_LIB interfaces/i_kernel.h src/kernels/normalKernel.cpp src/kernels/normalKernel.h src/kernelDensityEstimator.cpp src/kernelDensityEstimator.h src/weightedKernelDensityEstimator.cpp src/weightedKernelDensityEstimator.h src/parametrizedWeightedKernelDensityEstimator.cpp src/parametrizedWeightedKernelDensityEstimator.h src/bandwidthDesignators/i_bandwidthDesignator.h)
+add_library(KDE_LIB interfaces/i_kernel.h src/kernels/normalKernel.cpp src/kernels/normalKernel.h src/kernelDensityEstimator.cpp src/kernelDensityEstimator.h src/weightedKernelDensityEstimator.cpp src/weightedKernelDensityEstimator.h src/parametrizedWeightedKernelDensityEstimator.cpp src/parametrizedWeightedKernelDensityEstimator.h src/bandwidthDesignators/i_bandwidthCalculator.h src/bandwidthDesignators/pluginBandwidthCalculator.cpp src/bandwidthDesignators/pluginBandwidthCalculator.h)
 
 include_directories(src/kernels)
 
