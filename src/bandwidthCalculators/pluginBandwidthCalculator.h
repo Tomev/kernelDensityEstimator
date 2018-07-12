@@ -22,14 +22,14 @@ class pluginBandwidthCalculator : public i_bandwidthCalculator
     std::vector<double> samplesValuesAtDimension;
 
     double getRankedBandwidthAtGivenDimension();
-    double count3rdRankH();
-    double count2ndRankH(double currentH);
-    double count1stRankH(double currentH);
-    double countSmallC(unsigned int xi);
+    virtual double count3rdRankH();
+    virtual double count2ndRankH(double currentH);
+    virtual double count1stRankH(double currentH);
+    virtual double countSmallC(unsigned int xi);
     double countStandardDeviationEstimator();
-    double countExpectedValueEstimator();
-    double countVariationEstimator(double expectedValueEstimator);
-    double countCapitalC(unsigned int xi, double h);
+    virtual double countExpectedValueEstimator();
+    virtual double countVariationEstimator(double expectedValueEstimator);
+    virtual double countCapitalC(unsigned int xi, double h);
     double countFactorial(unsigned int number);
 
     /// Knowing that normal kernel is used, it's n-th derivatives at 0 are calculated using simplified formulas
