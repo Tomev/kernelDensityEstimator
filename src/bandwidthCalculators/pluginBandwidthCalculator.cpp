@@ -45,11 +45,13 @@ double pluginBandwidthCalculator::getRankedBandwidthAtGivenDimension()
 
   if(rank == THIRD_RANK)
     h = count3rdRankH();
-
+K
   h = count2ndRankH(h);
   h = count1stRankH(h);
 
-  return pow(countCapitalC(4, h) * kernel.getW(), 0.2);
+  h = kernel.getW() / countCapitalC(4, h);
+
+  return pow(h / samplesValuesAtDimension.size(), 0.2);
 }
 
 double pluginBandwidthCalculator::count3rdRankH()
