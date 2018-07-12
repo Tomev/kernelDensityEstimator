@@ -7,27 +7,26 @@
 
 class epanecznikowKernelFixture : public ::testing::Test
 {
-protected:
-  std::default_random_engine generator;
-  std::uniform_real_distribution<double> distribution;
+  protected:
+    std::default_random_engine generator;
+    std::uniform_real_distribution<double> distribution;
 
-  double eps = 1e-5;
-  double random = 0.0;
-  epanecznikowKernel kernel;
+    double eps = 1e-5;
+    double random = 0.0;
+    epanecznikowKernel kernel;
 
-  std::vector<double> args;
+    std::vector<double> args;
 
-  void SetUp() override
-  {
-    distribution = std::uniform_real_distribution(-10.0, 10.0);
-    srand((unsigned)time(nullptr));
-    random = distribution(generator);
-    args =  {0.0f, -1.0f, random, random - 1.0f};
-  }
+    void SetUp() override
+    {
+      distribution = std::uniform_real_distribution(-10.0, 10.0);
+      srand((unsigned)time(nullptr));
+      random = distribution(generator);
+      args =  {0.0f, -1.0f, random, random - 1.0f};
+    }
 
-  void TearDown() override
-  {}
-
+    void TearDown() override
+    {}
 };
 
 TEST_F(epanecznikowKernelFixture, max_in_zero_check)

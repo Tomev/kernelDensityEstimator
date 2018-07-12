@@ -43,32 +43,27 @@ double pluginBandwidthCalculator::getRankedBandwidthAtGivenDimension()
 {
   double h = -1.0;
 
-  for(int reducedRank = rank; reducedRank > 0; --reducedRank)
-  {
-    switch(reducedRank)
-    {
-      case THIRD_RANK:
-        h = count3rdRankH();
-        break;
-      case SECOND_RANK:
-        h = count2ndRankH(h);
-        break;
-      case 1:
-      default:
-        h = count1stRankH(h);
-        break;
-    }
-  }
+  if(rank == THIRD_RANK)
+    h = count3rdRankH();
 
-  return countCapitalC(4, h) * kernel.getW();
+  h = count2ndRankH(h);
+  h = count1stRankH(h);
+
+  return pow(countCapitalC(4, h) * kernel.getW(), 0.2);
 }
 
 double pluginBandwidthCalculator::count3rdRankH()
 {
-  double h = -2 * countKernels8thDerivativeValueAt0();
+  double h = -2 * countKernels8thDerivativeValueAtPoint(0);
   h /= countSmallC(10);
   h /= samplesValuesAtDimension.size();
-  return pow(h, -11);
+
+  int sigH = h < 0 ? -1 : 1;
+
+  h = pow(fabs(h), 1.0/11.0);
+  h *= sigH;
+
+  return h;
 }
 
 double pluginBandwidthCalculator::count2ndRankH(double currentH)
@@ -83,19 +78,15 @@ double pluginBandwidthCalculator::count2ndRankH(double currentH)
   double h = - 2.0 * countKernels6thDerivativeValueAt0();
   h /= samplesValuesAtDimension.size();
 
-  return pow(h / denominator, -9);
+  return pow(h / denominator, 1.0d/9.0d);
 }
 
 double pluginBandwidthCalculator::count1stRankH(double currentH)
 {
-  double denominator = 0.0d;
-
-    denominator = countCapitalC(6, currentH);
-
   double h = - 2.0 * countKernels4thDerivativeValueAt0();
   h /= samplesValuesAtDimension.size();
-
-  return pow(h / denominator, -7);
+  h /= countCapitalC(6, currentH);
+  return pow(h, 1.0d/7.0d);
 }
 
 double pluginBandwidthCalculator::countSmallC(unsigned int xi)
@@ -111,7 +102,6 @@ double pluginBandwidthCalculator::countStandardDeviationEstimator()
 {
   double E = countExpectedValueEstimator();
   double V = countVariationEstimator(E);
-
   return sqrt(V);
 }
 
@@ -122,7 +112,9 @@ double pluginBandwidthCalculator::countExpectedValueEstimator()
   for(double value : samplesValuesAtDimension)
     E += value;
 
-  return E / samplesValuesAtDimension.size();
+  E /= samplesValuesAtDimension.size();
+
+  return E;
 }
 
 double pluginBandwidthCalculator::countVariationEstimator(double expectedValueEstimator)
@@ -130,9 +122,11 @@ double pluginBandwidthCalculator::countVariationEstimator(double expectedValueEs
   double variationEstimator = 0.0d;
 
   for(double value : samplesValuesAtDimension)
-    variationEstimator /= pow(value - expectedValueEstimator, 2);
+    variationEstimator += pow(value - expectedValueEstimator, 2);
 
-  return variationEstimator / samplesValuesAtDimension.size();
+  variationEstimator /= samplesValuesAtDimension.size() - 1;
+
+  return variationEstimator;
 }
 
 double pluginBandwidthCalculator::countFactorial(unsigned int number)
@@ -146,19 +140,19 @@ double pluginBandwidthCalculator::countFactorial(unsigned int number)
 
 double pluginBandwidthCalculator::countCapitalC(unsigned int xi, double h)
 {
-  double (*kernelXithDerivativePtr)(double);
+  double (pluginBandwidthCalculator::*kernelXithDerivativePtr)(double);
 
   switch(xi)
   {
     case 8:
-      kernelXithDerivativePtr = &countKernels8thDerivativeValueAtPoint;
+      kernelXithDerivativePtr = &pluginBandwidthCalculator::countKernels8thDerivativeValueAtPoint;
       break;
     case 6:
-      kernelXithDerivativePtr = &countKernels6thDerivativeValueAtPoint;
+      kernelXithDerivativePtr = &pluginBandwidthCalculator::countKernels6thDerivativeValueAtPoint;
       break;
     case 4:
     default:
-      kernelXithDerivativePtr = &countKernels4thDerivativeValueAtPoint;
+      kernelXithDerivativePtr = &pluginBandwidthCalculator::countKernels4thDerivativeValueAtPoint;
   }
 
   double C = 0.0d;
@@ -166,25 +160,27 @@ double pluginBandwidthCalculator::countCapitalC(unsigned int xi, double h)
   for(double iValue : samplesValuesAtDimension)
   {
     for(double jValue : samplesValuesAtDimension)
-      C += kernelXithDerivativePtr((iValue - jValue) / h);
+      C += (*this.*kernelXithDerivativePtr)((iValue - jValue) / h);
   }
 
-  return C / (pow(samplesValuesAtDimension.size(), 2) * pow(h, xi + 1) );
+  C /= ( pow(samplesValuesAtDimension.size(), 2) * pow(h, xi + 1) );
+
+  return C;
 }
 
 double pluginBandwidthCalculator::countKernels8thDerivativeValueAt0()
 {
-  return 105.0d / sqrt(2 * M_PI);
+  return (105.0d / sqrt(2 * M_PI));
 }
 
 double pluginBandwidthCalculator::countKernels6thDerivativeValueAt0()
 {
-  return - 15.0d / sqrt(2 * M_PI);
+  return (-15.0d / sqrt(2 * M_PI));
 }
 
 double pluginBandwidthCalculator::countKernels4thDerivativeValueAt0()
 {
-  return 3.0d / sqrt(2 * M_PI);
+  return (3.0d / sqrt(2 * M_PI));
 }
 
 double pluginBandwidthCalculator::countKernels8thDerivativeValueAtPoint(double x)
@@ -201,3 +197,4 @@ double pluginBandwidthCalculator::countKernels4thDerivativeValueAtPoint(double x
 {
   return (pow(x, 4) - 6 * pow(x, 2) + 3.0d) * exp(- 0.5 * pow(x, 2)) / sqrt(2 * M_PI);
 }
+
