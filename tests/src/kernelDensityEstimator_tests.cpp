@@ -84,7 +84,6 @@ class kernelDensityEstimatorFixture : public ::testing::Test
         return std::make_shared<linearKernel>();
     }
   }
-
 };
 
 TEST_F(kernelDensityEstimatorFixture, greater_than_or_equal_to_0)
