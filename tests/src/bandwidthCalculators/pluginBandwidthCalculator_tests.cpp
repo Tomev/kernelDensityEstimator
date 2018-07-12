@@ -17,6 +17,8 @@ class pluginBandwidthCalculatorFixture : public ::testing::Test
     unsigned int maxSamplesSize = 100;
     unsigned int dimensionsNumber = 2;
 
+    double eps = 1e-5;
+
     void SetUp() override
     {
       srand((unsigned)time(nullptr));
@@ -51,8 +53,30 @@ TEST_F(pluginBandwidthCalculatorFixture, third_rank_larger_than_zero)
   ASSERT_TRUE(bandwidth[0] > 0.0d);
 }
 
+TEST_F(pluginBandwidthCalculatorFixture, third_rank_lower_than_one)
+{
+  calculator.setRank(3);
+  std::vector<double> bandwidth = calculator.getBandwidth(samples);
+  ASSERT_TRUE(bandwidth[0] > 0.0d);
+}
+
+TEST_F(pluginBandwidthCalculatorFixture, second_rank_lower_than_one)
+{
+  calculator.setRank(2);
+  std::vector<double> bandwidth = calculator.getBandwidth(samples);
+  ASSERT_TRUE(bandwidth[0] > 0.0d);
+}
+
 TEST_F(pluginBandwidthCalculatorFixture, returns_proper_dimension_number)
 {
   calculator.setRank(2);
   ASSERT_TRUE(calculator.getBandwidth(samples).size() == dimensionsNumber);
+}
+
+TEST_F(pluginBandwidthCalculatorFixture, setting_not_expected_rank_results_in_default)
+{
+  calculator.setRank(100);
+  double valueToTest = calculator.getBandwidth(samples)[0];
+  calculator.setRank(2);
+  ASSERT_TRUE(valueToTest - calculator.getBandwidth(samples)[0] < eps);
 }
