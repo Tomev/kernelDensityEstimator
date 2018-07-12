@@ -1,7 +1,8 @@
-#ifndef KERNELDENSITYESTIMATOR_I_BANDWIDTHDESIGNATOR_H
-#define KERNELDENSITYESTIMATOR_I_BANDWIDTHDESIGNATOR_H
+#ifndef KERNELDENSITYESTIMATOR_I_BANDWIDTHCALCULATOR_H
+#define KERNELDENSITYESTIMATOR_I_BANDWIDTHCALCULATOR_H
 
 #include <vector>
+#include <memory>
 
 class i_bandwidthCalculator
 {
@@ -9,4 +10,6 @@ class i_bandwidthCalculator
     virtual std::vector<double> getBandwidth(std::vector<std::vector<double>> samples) = 0;
 };
 
-#endif //KERNELDENSITYESTIMATOR_I_BANDWIDTHDESIGNATOR_H
+typedef
+
+#endif //KERNELDENSITYESTIMATOR_I_BANDWIDTHCALCULATOR_H
