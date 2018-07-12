@@ -45,7 +45,7 @@ double pluginBandwidthCalculator::getRankedBandwidthAtGivenDimension()
 
   if(rank == THIRD_RANK)
     h = count3rdRankH();
-K
+
   h = count2ndRankH(h);
   h = count1stRankH(h);
 
