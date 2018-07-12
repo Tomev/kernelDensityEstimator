@@ -8,6 +8,7 @@ class pluginBandwidthCalculator : public i_bandwidthCalculator
 {
   public:
     pluginBandwidthCalculator() = default;
+
     std::vector<double> getBandwidth(std::vector<std::vector<double>> samples) override;
 
     void setRank(unsigned int newRank);

@@ -2,12 +2,18 @@
 
 #include <cmath>
 
+/** Sets rank of bandwidth counting method. Note, that only 2 and 3 are implemented due to lack of derivative
+ *  counting methods and lack of necessity for higher ranks. If higher or lower rank would be passed, default rank
+ *  (second) will be used.
+ *
+ *  @param newRank
+ */
 void pluginBandwidthCalculator::setRank(unsigned int newRank)
 {
   if(newRank == THIRD_RANK)
-    rank = 3;
+    rank = THIRD_RANK;
   else
-    rank = 2;
+    rank = SECOND_RANK;
 }
 
 /** Returns bandwidth value calculated from given samples. Note that if samples are multidimensional it will return
@@ -70,7 +76,7 @@ double pluginBandwidthCalculator::count3rdRankH()
 
 double pluginBandwidthCalculator::count2ndRankH(double currentH)
 {
-  double denominator = 0.0d;
+  double denominator = 0.0;
 
   if(currentH < 0)
     denominator = countSmallC(8);
@@ -78,9 +84,9 @@ double pluginBandwidthCalculator::count2ndRankH(double currentH)
     denominator = countCapitalC(8, currentH);
 
   double h = - 2.0 * countKernels6thDerivativeValueAtPoint(0);
-  h /= samplesValuesAtDimension.size();
+  h /= samplesValuesAtDimension.size() * denominator;
 
-  return pow(h / denominator, 1.0d/9.0d);
+  return pow(h, 1.0/9.0);
 }
 
 double pluginBandwidthCalculator::count1stRankH(double currentH)
@@ -88,7 +94,7 @@ double pluginBandwidthCalculator::count1stRankH(double currentH)
   double h = - 2.0 * countKernels4thDerivativeValueAtPoint(0);
   h /= samplesValuesAtDimension.size();
   h /= countCapitalC(6, currentH);
-  return pow(h, 1.0d/7.0d);
+  return pow(h, 1.0/7.0);
 }
 
 double pluginBandwidthCalculator::countSmallC(unsigned int xi)
@@ -109,7 +115,7 @@ double pluginBandwidthCalculator::countStandardDeviationEstimator()
 
 double pluginBandwidthCalculator::countExpectedValueEstimator()
 {
-  double E = 0.0d;
+  double E = 0.0;
 
   for(double value : samplesValuesAtDimension)
     E += value;
@@ -121,7 +127,7 @@ double pluginBandwidthCalculator::countExpectedValueEstimator()
 
 double pluginBandwidthCalculator::countVariationEstimator(double expectedValueEstimator)
 {
-  double variationEstimator = 0.0d;
+  double variationEstimator = 0.0;
 
   for(double value : samplesValuesAtDimension)
     variationEstimator += pow(value - expectedValueEstimator, 2);
@@ -157,7 +163,7 @@ double pluginBandwidthCalculator::countCapitalC(unsigned int xi, double h)
       kernelXithDerivativePtr = &pluginBandwidthCalculator::countKernels4thDerivativeValueAtPoint;
   }
 
-  double C = 0.0d;
+  double C = 0.0;
 
   for(double iValue : samplesValuesAtDimension)
   {
@@ -182,6 +188,6 @@ double pluginBandwidthCalculator::countKernels6thDerivativeValueAtPoint(double x
 
 double pluginBandwidthCalculator::countKernels4thDerivativeValueAtPoint(double x)
 {
-  return (pow(x, 4) - 6 * pow(x, 2) + 3.0d) * exp(- 0.5 * pow(x, 2)) / sqrt(2 * M_PI);
+  return (pow(x, 4) - 6 * pow(x, 2) + 3) * exp(- 0.5 * pow(x, 2)) / sqrt(2 * M_PI);
 }
 
