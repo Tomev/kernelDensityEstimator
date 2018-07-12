@@ -7,7 +7,14 @@ std::vector<double> weightedPluginBandwidthCalculator::getBandwidth(std::vector<
   overallWeight = 0.0;
   for(double weight : weights) overallWeight += weight;
 
-  return pluginBandwidthCalculator::getBandwidth(samples);
+  std::vector<double> bandwidth = pluginBandwidthCalculator::getBandwidth(samples);
+
+  return bandwidth;
+}
+
+void weightedPluginBandwidthCalculator::setWeights(std::vector<double> newWeights)
+{
+  weights = newWeights;
 }
 
 double weightedPluginBandwidthCalculator::count3rdRankH()
@@ -123,3 +130,5 @@ double weightedPluginBandwidthCalculator::countCapitalC(unsigned int xi, double 
 
   return C;
 }
+
+

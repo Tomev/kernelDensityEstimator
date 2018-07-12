@@ -10,6 +10,8 @@ class weightedPluginBandwidthCalculator : public pluginBandwidthCalculator
 
     std::vector<double> getBandwidth(std::vector<std::vector<double>> samples) override;
 
+    void setWeights(std::vector<double> newWeights);
+
   protected:
 
     std::vector<double> weights;

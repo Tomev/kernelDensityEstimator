@@ -4,7 +4,7 @@ add_executable( kernelsTests kernels/normalKernel_tests.cpp kernels/linearKernel
                 kernels/epanecznikowKernel_tests.cpp kernels/triangularKernel_tests.cpp kernels/productKernel_tests.cpp
                 kernelDensityEstimator_tests.cpp weightedKernelDensityEstimator_tests.cpp
                 parametrizedWeightedKernelDensityEstimator_tests.cpp
-                bandwidthCalculators/pluginBandwidthCalculator_tests.cpp)
+                bandwidthCalculators/pluginBandwidthCalculator_tests.cpp bandwidthCalculators/weightedPluginBandwidthCalculator_tests.cpp)
 
 target_link_libraries(kernelsTests gtest gtest_main)
 target_link_libraries(kernelsTests KERNELS_LIB)
