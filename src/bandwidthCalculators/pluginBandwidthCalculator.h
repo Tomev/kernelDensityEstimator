@@ -32,9 +32,6 @@ class pluginBandwidthCalculator : public i_bandwidthCalculator
     double countFactorial(unsigned int number);
 
     /// Knowing that normal kernel is used, it's n-th derivatives at 0 are calculated using simplified formulas
-    double countKernels8thDerivativeValueAt0();
-    double countKernels6thDerivativeValueAt0();
-    double countKernels4thDerivativeValueAt0();
     double countKernels8thDerivativeValueAtPoint(double x);
     double countKernels6thDerivativeValueAtPoint(double x);
     double countKernels4thDerivativeValueAtPoint(double x);

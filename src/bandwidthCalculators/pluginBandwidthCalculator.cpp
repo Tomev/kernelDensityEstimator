@@ -77,7 +77,7 @@ double pluginBandwidthCalculator::count2ndRankH(double currentH)
   else
     denominator = countCapitalC(8, currentH);
 
-  double h = - 2.0 * countKernels6thDerivativeValueAt0();
+  double h = - 2.0 * countKernels6thDerivativeValueAtPoint(0);
   h /= samplesValuesAtDimension.size();
 
   return pow(h / denominator, 1.0d/9.0d);
@@ -85,7 +85,7 @@ double pluginBandwidthCalculator::count2ndRankH(double currentH)
 
 double pluginBandwidthCalculator::count1stRankH(double currentH)
 {
-  double h = - 2.0 * countKernels4thDerivativeValueAt0();
+  double h = - 2.0 * countKernels4thDerivativeValueAtPoint(0);
   h /= samplesValuesAtDimension.size();
   h /= countCapitalC(6, currentH);
   return pow(h, 1.0d/7.0d);
@@ -168,21 +168,6 @@ double pluginBandwidthCalculator::countCapitalC(unsigned int xi, double h)
   C /= ( pow(samplesValuesAtDimension.size(), 2) * pow(h, xi + 1) );
 
   return C;
-}
-
-double pluginBandwidthCalculator::countKernels8thDerivativeValueAt0()
-{
-  return (105.0d / sqrt(2 * M_PI));
-}
-
-double pluginBandwidthCalculator::countKernels6thDerivativeValueAt0()
-{
-  return (-15.0d / sqrt(2 * M_PI));
-}
-
-double pluginBandwidthCalculator::countKernels4thDerivativeValueAt0()
-{
-  return (3.0d / sqrt(2 * M_PI));
 }
 
 double pluginBandwidthCalculator::countKernels8thDerivativeValueAtPoint(double x)
