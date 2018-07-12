@@ -10,6 +10,6 @@ class i_bandwidthCalculator
     virtual std::vector<double> getBandwidth(std::vector<std::vector<double>> samples) = 0;
 };
 
-typedef
+typedef std::shared_ptr<i_bandwidthCalculator> bandwidthCalculatorPtr;
 
 #endif //KERNELDENSITYESTIMATOR_I_BANDWIDTHCALCULATOR_H
