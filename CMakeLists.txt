@@ -7,6 +7,5 @@ add_library(KDE_LIB interfaces/i_kernel.h src/kernels/normalKernel.cpp src/kerne
 
 include_directories(src/kernels)
 
-add_subdirectory(tests)
 add_subdirectory(src/kernels)
 
