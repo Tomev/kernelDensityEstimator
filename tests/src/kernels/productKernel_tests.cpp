@@ -47,11 +47,6 @@ class productKernelFixture : public ::testing::Test
 
 };
 
-TEST_F(productKernelFixture, max_in_0_check)
-{
-  ASSERT_TRUE(kernel->getValue({0.0}) >= kernel->getValue({random}));
-}
-
 TEST_F(productKernelFixture, non_negative_check)
 {
   ASSERT_TRUE(kernel->getValue(args) >= 0.0);
