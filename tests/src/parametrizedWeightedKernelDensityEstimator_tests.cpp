@@ -26,10 +26,10 @@ class parametrizedWeightedKernelDensityEstimatorFixture : public ::testing::Test
 
   void SetUp() override
   {
-    bandwidthDistribution = std::uniform_real_distribution<double>(0.3d, 0.6d);
-    weightsDistribution = std::uniform_real_distribution<double>(0.0d, 1.0d);
-    samplesDistribution = std::normal_distribution<double>(0.0d, 1.0d);
-    paramsDistribution = std::uniform_real_distribution<double>(0.0d, 1.0d);
+    bandwidthDistribution = std::uniform_real_distribution<double>(0.3, 0.6);
+    weightsDistribution = std::uniform_real_distribution<double>(0.0, 1.0);
+    samplesDistribution = std::normal_distribution<double>(0.0, 1.0);
+    paramsDistribution = std::uniform_real_distribution<double>(0.0, 1.0);
     intDistribution = std::uniform_int_distribution<int> (0, 4);
 
     srand((unsigned)time(nullptr));
@@ -108,13 +108,13 @@ class parametrizedWeightedKernelDensityEstimatorFixture : public ::testing::Test
 TEST_F(parametrizedWeightedKernelDensityEstimatorFixture, positive_params_check)
 {
   estimator->setAdditionalParameters(positiveParameters);
-  ASSERT_TRUE(estimator->getValue(args) >= 0.0d);
+  ASSERT_TRUE(estimator->getValue(args) >= 0.0);
 }
 
 TEST_F(parametrizedWeightedKernelDensityEstimatorFixture, negative_params_check)
 {
   estimator->setAdditionalParameters(negativeParameters);
-  ASSERT_TRUE(estimator->getValue(args) <= 0.0d);
+  ASSERT_TRUE(estimator->getValue(args) <= 0.0);
 }
 
 

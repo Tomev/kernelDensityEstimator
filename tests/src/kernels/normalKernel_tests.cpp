@@ -22,7 +22,7 @@ class normalKernelFixture : public ::testing::Test
       distribution = std::uniform_real_distribution(-10.0, 10.0);
       srand((unsigned)time(nullptr));
       random = distribution(generator);
-      args =  {0.0f, -1.0f, random, random - 1.0f};
+      args =  {0.0, -1.0, random, random - 1.0};
     }
 
     void TearDown() override
@@ -42,12 +42,12 @@ TEST_F(normalKernelFixture, symmetry_check)
 
 TEST_F(normalKernelFixture, greater_than_0)
 {
-  ASSERT_TRUE(kernel.getValue(random) > 0.0f);
+  ASSERT_TRUE(kernel.getValue(random) > 0.0);
 }
 
 TEST_F(normalKernelFixture, different_getValues_check)
 {
-  ASSERT_TRUE(kernel.getValue(args) - kernel.getValue(0.0f) < eps);
+  ASSERT_TRUE(kernel.getValue(args) - kernel.getValue(0.0) < eps);
 }
 
 

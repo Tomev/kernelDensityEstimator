@@ -37,7 +37,7 @@ class productKernelFixture : public ::testing::Test
     distribution = std::uniform_real_distribution(-10.0, 10.0);
     srand((unsigned)time(nullptr));
     random = distribution(generator);
-    args =  {0.0d, 0.0d, 0.0d, 0.0d, -1.0d, random, random - 1.0d, - random};
+    args =  {0.0, 0.0, 0.0, 0.0, -1.0, random, random - 1.0, - random};
     symArgs = {0, 1, 2, 3, -4, random};
     mSymArgs = {0, -1, -2, -3, 4, -random};
   }
@@ -49,12 +49,12 @@ class productKernelFixture : public ::testing::Test
 
 TEST_F(productKernelFixture, max_in_0_check)
 {
-  ASSERT_TRUE(kernel->getValue({0.0d}) >= kernel->getValue({random}));
+  ASSERT_TRUE(kernel->getValue({0.0}) >= kernel->getValue({random}));
 }
 
 TEST_F(productKernelFixture, non_negative_check)
 {
-  ASSERT_TRUE(kernel->getValue(args) >= 0.0d);
+  ASSERT_TRUE(kernel->getValue(args) >= 0.0);
 }
 
 TEST_F(productKernelFixture, symmetry_check)
